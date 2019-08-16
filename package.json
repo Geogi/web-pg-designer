@@ -1,21 +1,25 @@
 {
   "name": "some-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "Some React",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server"
   },
-  "author": "",
+  "private": true,
+  "author": "Paul Blouët <paulmoa@gmail.com>",
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
     "@types/react": "^16.9.1",
     "@types/react-dom": "^16.8.5",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
     "react": "^16.9.0",
