@@ -4,12 +4,12 @@ import thunk from "redux-thunk";
 import {applyMiddleware, createStore} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {Provider} from "react-redux";
-import rootReducer from "./reducers/root";
+import root from "./reducers/root";
 import "typeface-roboto";
 import App from "./components/App";
 
 const store = createStore(
-    rootReducer,
+    root,
     composeWithDevTools(
         applyMiddleware(thunk)
     )

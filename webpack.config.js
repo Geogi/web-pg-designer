@@ -7,7 +7,7 @@ module.exports = {
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"]
     },
-    entry: resolve(__dirname, "src/main.tsx"),
+    entry: resolve(__dirname, "src/actions.tsx"),
     devServer: {
         contentBase: resolve(__dirname, "src"),
         liveReload: true,
