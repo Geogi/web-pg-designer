@@ -1,25 +1,18 @@
-import reduceReducer from "reduce-reducers";
-import {handleAction, handleActions} from "redux-actions";
-import {navigateSettings} from "../actions/actions";
-import {AnyAction, Reducer} from "redux";
+import {handleActions} from "../utils";
+import {navigatePage, navigateSettings} from "../actions/actions";
 
 export interface NavigationState {
-    page: "settings" | "welcome";
+    page: number;
 }
 
 const initialNavigationState: NavigationState = {
-    page: "welcome",
+    page: 0,
 };
 
 const navigation = handleActions(
-    // {
-    //     A: (state) => ({...state, page: "settings" } as NavigationState),
-    // },
-    // initialNavigationState
-    // handleAction(navigateSettings, (state) => ({
-    //     ...state,
-    //     page: "settings",
-    // }), initialNavigationState),
+    initialNavigationState,
+    [navigateSettings, (s: NavigationState) => ({...s, page: 1})],
+    [navigatePage, (s: NavigationState, p: number) => ({...s, page: p})]
 );
 
 export default navigation;

@@ -1,5 +1,4 @@
-import {createAction} from "redux-actions";
+import {createAction} from "../utils";
 
-const nothing = () => {};
-
-export const navigateSettings = createAction("NAVIGATE/SETTINGS", () => nothing());
+export const navigateSettings = createAction("NAVIGATE/SETTINGS");
+export const navigatePage = createAction("NAVIGATE/PAGE", (arg: number) => arg);
