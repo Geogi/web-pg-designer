@@ -1,10 +1,10 @@
 import * as React from "react";
-import {useState} from "react";
+import {CssBaseline} from "@material-ui/core";
+import MAppBar from "./MAppBar";
 
-export const App = () => {
-    const [state, setState] = useState(0);
+const App = () => <React.Fragment>
+    <CssBaseline/>
+    <MAppBar/>
+</React.Fragment>;
 
-    return <div>
-        <p>Click: {state} <button onClick={() => setState(state + 1)}>click</button></p>
-    </div>;
-};
+export default App;

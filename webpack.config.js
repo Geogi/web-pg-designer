@@ -28,8 +28,15 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                exclude: resolve(__dirname, "node_modules"),
                 loader: 'html-loader',
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                loader: 'url-loader'
             },
             {
                 enforce: "pre",
