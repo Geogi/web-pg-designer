@@ -1,18 +1,19 @@
-import {handleActions} from "../utils";
-import {navigatePage, navigateSettings} from "../actions/actions";
+import {actions, handle} from "../utils";
+import {navigateSettings} from "../actions/actions";
+
+type Page = "welcome" | "settings";
 
 export interface NavigationState {
-    page: number;
+    page: Page;
 }
 
 const initialNavigationState: NavigationState = {
-    page: 0,
+    page: "welcome",
 };
 
-const navigation = handleActions(
+const navigation = actions(
     initialNavigationState,
-    [navigateSettings, (s: NavigationState) => ({...s, page: 1})],
-    [navigatePage, (s: NavigationState, p: number) => ({...s, page: p})]
+    handle(navigateSettings, (s: NavigationState) => ({...s, page: "settings" as const})),
 );
 
 export default navigation;
