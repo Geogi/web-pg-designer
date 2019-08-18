@@ -4,6 +4,8 @@ import {drawerWidth} from "./MDrawer";
 import Welcome from "./Welcome";
 import Settings from "./Settings";
 import {Page} from "../reducers/navigation";
+import {useSelector} from "react-redux";
+import {RootState} from "../reducers/root";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     container: {
@@ -11,22 +13,23 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         marginLeft: drawerWidth,
     },
     welcome: {
-        display: selectPage("welcome"),
+        display: showPage("welcome"),
     },
     settings: {
-        display: selectPage("settings"),
+        display: showPage("settings"),
     },
 }));
 
-const selectPage = (page: Page) => (props: MainViewState) => props.page === page ? "block" : "none";
+const showPage = (destination: Page) => ({page}: Props) => page === destination ? "block" : "none";
 
-export interface MainViewState {
+interface Props {
     page: Page;
 }
 
-export interface MainViewProps extends MainViewState {}
-
-const MainView = (props: MainViewProps) => {
+const MainView = () => {
+    const props: Props = useSelector((state: RootState) => ({
+        page: state.navigation.page
+    }));
     const classes = useStyles(props);
 
     return <Container>

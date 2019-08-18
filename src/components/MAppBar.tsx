@@ -1,6 +1,8 @@
 import * as React from "react";
 import {AppBar, Button, createStyles, IconButton, makeStyles, Theme, Toolbar, Typography} from "@material-ui/core";
 import BrushIcon from "@material-ui/icons/Brush";
+import {useDispatch} from "react-redux";
+import {navigateSettings} from "../actions/actions";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     appBar: {
@@ -14,14 +16,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
 }));
 
-export interface MAppBarDispatch {
-    connect: any;
-}
-
-export interface MAppBarProps extends MAppBarDispatch {}
-
-const MAppBar = (props: MAppBarProps) => {
+const MAppBar = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
 
     return <AppBar className={classes.appBar}>
         <Toolbar>
@@ -31,7 +28,7 @@ const MAppBar = (props: MAppBarProps) => {
             <Typography variant="h6" className={classes.title}>
                 Database Modeler
             </Typography>
-            <Button color="inherit" onClick={props.connect}>Connect</Button>
+            <Button color="inherit" onClick={() => dispatch(navigateSettings())}>Connect</Button>
         </Toolbar>
     </AppBar>;
 };

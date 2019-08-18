@@ -1,14 +1,14 @@
 import * as React from "react";
 import {CssBaseline} from "@material-ui/core";
 import MDrawer from "./MDrawer";
-import MainViewCont from "../containers/MainViewCont";
-import MAppBarCont from "../containers/MAppBarCont";
+import MainView from "./MainView";
+import MAppBar from "./MAppBar";
 
 const App = () => <React.Fragment>
     <CssBaseline/>
-    <MAppBarCont/>
+    <MAppBar/>
     <MDrawer/>
-    <MainViewCont/>
+    <MainView/>
 </React.Fragment>;
 
 export default App;
