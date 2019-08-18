@@ -14,7 +14,13 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
 }));
 
-const MAppBar = () => {
+export interface MAppBarDispatch {
+    connect: any;
+}
+
+export interface MAppBarProps extends MAppBarDispatch {}
+
+const MAppBar = (props: MAppBarProps) => {
     const classes = useStyles();
 
     return <AppBar className={classes.appBar}>
@@ -25,7 +31,7 @@ const MAppBar = () => {
             <Typography variant="h6" className={classes.title}>
                 Database Modeler
             </Typography>
-            <Button color="inherit">Connect</Button>
+            <Button color="inherit" onClick={props.connect}>Connect</Button>
         </Toolbar>
     </AppBar>;
 };

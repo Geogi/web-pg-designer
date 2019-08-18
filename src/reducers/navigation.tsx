@@ -1,7 +1,7 @@
 import {actions, handle} from "../utils";
 import {navigateSettings} from "../actions/actions";
 
-type Page = "welcome" | "settings";
+export type Page = "welcome" | "settings";
 
 export interface NavigationState {
     page: Page;

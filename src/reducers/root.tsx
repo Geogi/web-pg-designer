@@ -1,7 +1,7 @@
 import {combineReducers} from "redux";
 import navigation, {NavigationState} from "./navigation";
 
-interface RootState {
+export interface RootState {
     navigation: NavigationState;
 }
 

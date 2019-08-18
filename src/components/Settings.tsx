@@ -9,13 +9,13 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
 }));
 
-const Welcome = () => {
+const Settings = () => {
     const classes = useStyles();
 
     return <Paper className={classes.paper}>
-        <Typography variant="h5">Welcome</Typography>
-        <Typography variant="body1">Connect to a database to start modeling.</Typography>
+        <Typography variant="h5">Settings</Typography>
+        <Typography variant="body1">Blablabla.</Typography>
     </Paper>;
 };
 
-export default Welcome;
+export default Settings;
