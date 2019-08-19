@@ -9,15 +9,15 @@ import "typeface-roboto";
 import App from "./components/App";
 
 const store = createStore(
-    root,
-    composeWithDevTools(
-        applyMiddleware(thunk)
-    )
+  root,
+  composeWithDevTools(
+    applyMiddleware(thunk)
+  )
 );
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App/>
-    </Provider>,
-    document.getElementById("root")
+  <Provider store={store}>
+    <App/>
+  </Provider>,
+  document.getElementById("root")
 );

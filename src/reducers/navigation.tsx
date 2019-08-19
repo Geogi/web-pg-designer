@@ -1,19 +1,23 @@
 import {actions, handle} from "../utils";
-import {navigateSettings} from "../actions/actions";
+import {mobileMenuClose, mobileMenuToggle, navigateSettings} from "../actions/actions";
 
 export type Page = "welcome" | "settings";
 
-export interface NavigationState {
-    page: Page;
+export interface Navigation {
+  mobileMenuOpen: boolean;
+  page: Page;
 }
 
-const initialNavigationState: NavigationState = {
-    page: "welcome",
+const initialNavigationState: Navigation = {
+  mobileMenuOpen: false,
+  page: "welcome",
 };
 
 const navigation = actions(
-    initialNavigationState,
-    handle(navigateSettings, (s: NavigationState) => ({...s, page: "settings" as const})),
+  initialNavigationState,
+  handle(mobileMenuToggle, (s: Navigation) => ({...s, mobileMenuOpen: !s.mobileMenuOpen})),
+  handle(mobileMenuClose, (s: Navigation) => ({...s, mobileMenuOpen: false})),
+  handle(navigateSettings, (s: Navigation) => ({...s, page: "settings"})),
 );
 
 export default navigation;

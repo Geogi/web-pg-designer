@@ -5,10 +5,10 @@ import MainView from "./MainView";
 import MAppBar from "./MAppBar";
 
 const App = () => <React.Fragment>
-    <CssBaseline/>
-    <MAppBar/>
-    <MDrawer/>
-    <MainView/>
+  <CssBaseline/>
+  <MAppBar/>
+  <MDrawer/>
+  <MainView/>
 </React.Fragment>;
 
 export default App;

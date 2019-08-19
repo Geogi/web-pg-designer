@@ -1,12 +1,12 @@
 import {combineReducers} from "redux";
-import navigation, {NavigationState} from "./navigation";
+import navigation, {Navigation} from "./navigation";
 
-export interface RootState {
-    navigation: NavigationState;
+export interface Root {
+  navigation: Navigation;
 }
 
-const root = combineReducers<RootState>({
-    navigation
+const root = combineReducers<Root>({
+  navigation
 });
 
 export default root;
