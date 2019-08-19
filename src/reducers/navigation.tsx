@@ -1,4 +1,4 @@
-import {actions, handle} from "../utils";
+import {actions, handle} from "../actionReduce";
 import {mobileMenuClose, mobileMenuToggle, navigateSettings} from "../actions/actions";
 
 export type Page = "welcome" | "settings";

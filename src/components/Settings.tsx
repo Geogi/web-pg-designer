@@ -1,7 +1,7 @@
 import {Button, createStyles, makeStyles, Paper, TextField, Theme, Typography} from "@material-ui/core";
 import * as React from "react";
 import {OutlinedTextFieldProps} from "@material-ui/core/TextField";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
   settingsChangeDatabase,
   settingsChangeHost,
@@ -9,7 +9,10 @@ import {
   settingsChangePort,
   settingsChangeUser
 } from "../actions/actions";
-import {defaultPort} from "../reducers/settings";
+import {defaultPort} from "../reducers/database";
+import {Root} from "../reducers/root";
+import CheckIcon from "@material-ui/icons/check";
+import ErrorIcon from "@material-ui/icons/error";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   paper: {
@@ -33,6 +36,8 @@ const Outlined = (props: Omit<OutlinedTextFieldProps, 'variant'>) =>
 type Ev = React.ChangeEvent<HTMLInputElement>;
 
 const Settings = () => {
+  const testResult = useSelector((st: Root) => st.database.testResult);
+  const testMsg = useSelector((st: Root) => st.database.testMsg);
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -52,6 +57,8 @@ const Settings = () => {
                 onChange={({target: {value}}: Ev) => dispatch(settingsChangePassword(value))}/>
       <Button>Connect</Button>
     </form>
+    {testResult === true && <Typography><CheckIcon/> PostgreSQL version {testMsg}</Typography>}
+    {testResult === true && <Typography><ErrorIcon/> Could not connect: {testMsg}</Typography>}
   </Paper>;
 };
 
