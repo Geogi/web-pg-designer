@@ -1,5 +1,15 @@
 import {Button, createStyles, makeStyles, Paper, TextField, Theme, Typography} from "@material-ui/core";
 import * as React from "react";
+import {OutlinedTextFieldProps} from "@material-ui/core/TextField";
+import {useDispatch} from "react-redux";
+import {
+  settingsChangeDatabase,
+  settingsChangeHost,
+  settingsChangePassword,
+  settingsChangePort,
+  settingsChangeUser
+} from "../actions/actions";
+import {defaultPort} from "../reducers/settings";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   paper: {
@@ -17,23 +27,29 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
 }));
 
+const Outlined = (props: Omit<OutlinedTextFieldProps, 'variant'>) =>
+  <TextField variant="outlined" margin="normal" autoComplete="off" {...props}/>;
+
+type Ev = React.ChangeEvent<HTMLInputElement>;
+
 const Settings = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return <Paper className={classes.paper}>
     <Typography variant="h5">Settings</Typography>
     <form className={classes.form} noValidate autoComplete="off">
-      <TextField label="Host" className={classes.textField} variant="outlined" margin="normal"/>
-      <TextField label="Port" className={classes.textField} variant="outlined" margin="normal" type="number"/>
-      <TextField label="Database" className={classes.textField} variant="outlined" margin="normal"/>
-      <TextField label="User" className={classes.textField} variant="outlined" margin="normal"/>
-      <TextField
-        label="Password"
-        className={classes.textField}
-        variant="outlined"
-        margin="normal"
-        type="password"
-      />
+      <Outlined label="Host" className={classes.textField}
+                onChange={({target: {value}}: Ev) => dispatch(settingsChangeHost(value))}/>
+      <Outlined label="Port" className={classes.textField} type="number"
+                onChange={({target: {value}}: Ev) => dispatch(settingsChangePort(parseInt(value) || defaultPort))}/>
+      <Outlined label="Database" className={classes.textField}
+                onChange={({target: {value}}: Ev) => dispatch(settingsChangeDatabase(value))}/>
+      <Outlined label="User" className={classes.textField}
+                onChange={({target: {value}}: Ev) => dispatch(settingsChangeUser(value))}/>
+      <Outlined label="Password" className={classes.textField} type="password"
+                helperText="Not securely stored."
+                onChange={({target: {value}}: Ev) => dispatch(settingsChangePassword(value))}/>
       <Button>Connect</Button>
     </form>
   </Paper>;

@@ -8,16 +8,16 @@ export interface Navigation {
   page: Page;
 }
 
-const initialNavigationState: Navigation = {
+const init: Navigation = {
   mobileMenuOpen: false,
   page: "welcome",
 };
 
 const navigation = actions(
-  initialNavigationState,
-  handle(mobileMenuToggle, (s: Navigation) => ({...s, mobileMenuOpen: !s.mobileMenuOpen})),
-  handle(mobileMenuClose, (s: Navigation) => ({...s, mobileMenuOpen: false})),
-  handle(navigateSettings, (s: Navigation) => ({...s, page: "settings"})),
+  init,
+  handle(mobileMenuToggle, (st: Navigation) => ({...st, mobileMenuOpen: !st.mobileMenuOpen})),
+  handle(mobileMenuClose, (st: Navigation): Navigation => ({...st, mobileMenuOpen: false})),
+  handle(navigateSettings, (st: Navigation): Navigation => ({...st, page: "settings"})),
 );
 
 export default navigation;

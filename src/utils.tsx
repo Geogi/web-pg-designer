@@ -28,12 +28,12 @@ export function createAction<T, P>(type: string, payloadFn?: (arg: T) => P): Com
   }
 }
 
-interface DefinedActionReducer<S, T extends S> {
+interface DefinedActionReducer<S> {
   type: string;
-  reducer: (s: S, p: any) => T | undefined;
+  reducer: (s: S, p: any) => S | undefined;
 }
 
-export function actions<S, T extends S>(initialState: S, ...dar: DefinedActionReducer<S, T>[]): Reducer<S> {
+export function actions<S>(initialState: S, ...dar: DefinedActionReducer<S>[]): Reducer<S> {
   return (previousState: S | undefined, action: MaybePayloadAction<any>) =>
     dar
       .filter(({type}) => type === action.type)
@@ -43,12 +43,12 @@ export function actions<S, T extends S>(initialState: S, ...dar: DefinedActionRe
     || initialState
 }
 
-export function handle<S, T extends S, P>(maker: VoidCommand, handler: (s: S) => T): DefinedActionReducer<S, T>;
-export function handle<S, T extends S, P>(
+export function handle<S, P>(maker: VoidCommand, handler: (s: S) => S): DefinedActionReducer<S>;
+export function handle<S, P>(
   maker: PayloadCommand<any, P>,
-  handler: (s: S, p: P) => T):
-  DefinedActionReducer<S, T>;
-export function handle<S, T extends S, P>(maker: Command<S, P>, handler: Function): DefinedActionReducer<S, T> {
+  handler: (s: S, p: P) => S):
+  DefinedActionReducer<S>;
+export function handle<S, P>(maker: Command<S, P>, handler: Function): DefinedActionReducer<S> {
   return {
     type: maker.type,
     reducer: (s: S, p: any) => {
