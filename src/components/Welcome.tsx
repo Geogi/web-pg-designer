@@ -1,5 +1,7 @@
-import {createStyles, makeStyles, Paper, Theme, Typography} from "@material-ui/core";
+import {createStyles, Link, makeStyles, Paper, Theme, Typography} from "@material-ui/core";
 import * as React from "react";
+import {useDispatch} from "react-redux";
+import {navigateSettings} from "../actions/actions";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     paper: {
@@ -11,10 +13,14 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 
 const Welcome = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
 
     return <Paper className={classes.paper}>
         <Typography variant="h5">Welcome</Typography>
-        <Typography variant="body1">Connect to a database to start modeling.</Typography>
+        <Typography variant="body1">
+            <Link onClick={() => dispatch(navigateSettings())}>Connect</Link>
+            {' '}to a database to start modeling.
+        </Typography>
     </Paper>;
 };
 

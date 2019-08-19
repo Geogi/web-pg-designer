@@ -12,30 +12,16 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         marginTop: theme.spacing(12),
         marginLeft: drawerWidth,
     },
-    welcome: {
-        display: showPage("welcome"),
-    },
-    settings: {
-        display: showPage("settings"),
-    },
 }));
 
-const showPage = (destination: Page) => ({page}: Props) => page === destination ? "block" : "none";
-
-interface Props {
-    page: Page;
-}
-
 const MainView = () => {
-    const props: Props = useSelector((state: RootState) => ({
-        page: state.navigation.page
-    }));
-    const classes = useStyles(props);
+    const page: Page = useSelector((state: RootState) => state.navigation.page);
+    const classes = useStyles();
 
     return <Container>
         <div className={classes.container}>
-            <div className={classes.welcome}><Welcome/></div>
-            <div className={classes.settings}><Settings/></div>
+            {page === "welcome" && <Welcome/>}
+            {page === "settings" && <Settings/>}
         </div>
     </Container>;
 };
