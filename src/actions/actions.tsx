@@ -1,4 +1,4 @@
-import {createAction} from "../actionReduce";
+import {createAction} from "../utils/actionReduce";
 
 export const mobileMenuToggle = createAction("MOBILE_MENU/TOGGLE");
 export const mobileMenuClose = createAction("MOBILE_MENU/CLOSE");

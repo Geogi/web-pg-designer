@@ -10,7 +10,7 @@ import {Root} from "../reducers/root";
 const useStyles = makeStyles((theme: Theme) => createStyles({
   container: {
     marginTop: theme.spacing(12),
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("md")]: {
       marginLeft: drawerWidth,
     },
   },

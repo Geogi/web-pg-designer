@@ -23,11 +23,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     flexShrink: 0,
   },
   drawerPaper: {
-    [theme.breakpoints.up('sm')]: {
-      marginTop: theme.spacing(8),
+    marginTop: 56,
+    [`${theme.breakpoints.up("xs")} and (orientation: 'landscape')`]: {
+      marginTop: 48,
     },
-    [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing(7),
+    [theme.breakpoints.up("sm")]: {
+      marginTop: 64,
     },
     width: drawerWidth,
   },
@@ -52,7 +53,7 @@ const MDrawer = () => {
   const dispatch = useDispatch();
 
   return <React.Fragment>
-    <Hidden smUp>
+    <Hidden mdUp>
       <DrawerBase
         variant="temporary"
         open={mobileIsOpen}
@@ -64,7 +65,7 @@ const MDrawer = () => {
         }}
       />
     </Hidden>
-    <Hidden xsDown>
+    <Hidden smDown>
       <DrawerBase variant="permanent"/>
     </Hidden>
   </React.Fragment>;

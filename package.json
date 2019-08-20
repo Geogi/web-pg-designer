@@ -2,9 +2,11 @@
   "name": "some-react",
   "version": "1.0.0",
   "description": "Some React",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "watch": "webpack --watch",
+    "start": "electron dist/main.js",
+    "start:reload": "electron utils/autoReloadMain.js"
   },
   "private": true,
   "author": "Paul Blouët <paulmoa@gmail.com>",
@@ -15,8 +17,12 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.2",
     "css-loader": "^3.2.0",
+    "electron": "^6.0.3",
+    "electron-reload": "^1.5.0",
+    "electron-reloader": "^0.3.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "node-loader": "^0.6.0",
     "redux-devtools-extension": "^2.13.8",
     "source-map-loader": "^0.2.4",
     "style-loader": "^1.0.0",
@@ -24,19 +30,20 @@
     "typescript": "^3.5.3",
     "url-loader": "^2.1.0",
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-cli": "^3.3.7"
   },
   "dependencies": {
     "@material-ui/core": "^4.3.2",
     "@material-ui/icons": "^4.2.1",
     "@material-ui/styles": "^4.3.0",
     "pg": "^7.12.1",
+    "pg-native": "^3.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
-    "typeface-roboto": "0.0.75"
+    "typeface-roboto": "0.0.75",
+    "uuid": "^3.3.3"
   }
 }

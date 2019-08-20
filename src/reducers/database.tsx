@@ -1,4 +1,4 @@
-import {actions, handle} from "../actionReduce";
+import {actions, handle} from "../utils/actionReduce";
 import {
   databaseErr,
   databaseOk,
