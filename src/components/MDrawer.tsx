@@ -10,9 +10,11 @@ import {
   Theme
 } from "@material-ui/core";
 import * as React from "react";
-import SettingsIcon from '@material-ui/icons/Settings';
+import SettingsIcon from "@material-ui/icons/Settings";
+import ViewComfyIcon from "@material-ui/icons/ViewComfy";
+import ListAltIcon from "@material-ui/icons/ListAlt";
 import {useDispatch, useSelector} from "react-redux";
-import {mobileMenuClose, navigateSettings} from "../actions/actions";
+import {mobileMenuClose, navigateCurrentRelation, navigateRelations, navigateSettings} from "../actions/actions";
 import {DrawerProps} from "@material-ui/core/Drawer";
 import {Root} from "../reducers/root";
 
@@ -24,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
   drawerPaper: {
     marginTop: 56,
-    [`${theme.breakpoints.up("xs")} and (orientation: 'landscape')`]: {
+    [`${theme.breakpoints.up("xs")} and (orientation: "landscape")`]: {
       marginTop: 48,
     },
     [theme.breakpoints.up("sm")]: {
@@ -35,12 +37,25 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 const DrawerBase = (props: DrawerProps) => {
+  const connected = useSelector((st: Root) => st.database.connected);
+  const page = useSelector((st: Root) => st.navigation.page);
+  const relation = useSelector((st: Root) => st.navigation.relation);
   const classes = useStyles();
   const dispatch = useDispatch();
 
   return <Drawer className={classes.drawer} classes={{paper: classes.drawerPaper}} {...props}>
     <List>
-      <ListItem button key="settings" onClick={() => dispatch(navigateSettings())}>
+      <ListItem button key="relations" onClick={() => dispatch(navigateRelations())} disabled={!connected}
+                selected={page === "relations"}>
+        <ListItemIcon><ViewComfyIcon/></ListItemIcon>
+        <ListItemText primary="Relations"/>
+      </ListItem>
+      <ListItem button key="relation" onClick={() => dispatch(navigateCurrentRelation())} disabled={relation === null}
+                selected={page === "relation"}>
+        <ListItemIcon><ListAltIcon/></ListItemIcon>
+        <ListItemText primary="Relation details"/>
+      </ListItem>
+      <ListItem button key="settings" onClick={() => dispatch(navigateSettings())} selected={page === "settings"}>
         <ListItemIcon><SettingsIcon/></ListItemIcon>
         <ListItemText primary="Settings"/>
       </ListItem>

@@ -6,6 +6,7 @@ const path = require("path");
 // noinspection JSUnusedLocalSymbols
 const {BrowserWindow, app, session} = require('electron');
 
+// noinspection SpellCheckingInspection
 app.whenReady().then(() => {
   // Show extensions
   // console.log(BrowserWindow.getDevToolsExtensions());
