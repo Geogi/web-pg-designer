@@ -16,4 +16,4 @@ const init = () => {
   createWindow();
 };
 
-app.on('ready', init);
+app.on("ready", init);
