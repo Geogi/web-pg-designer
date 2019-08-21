@@ -2,6 +2,7 @@ import {actions, handle} from "../utils/actionReduce";
 import {
   databaseErr,
   databaseOk,
+  databasePool,
   settingsChangeDatabase,
   settingsChangeHost,
   settingsChangePassword,
@@ -9,7 +10,6 @@ import {
   settingsChangeUser
 } from "../actions/actions";
 import {Pool} from "pg";
-import {databaseSetup} from "../actions/thunks";
 
 export interface Database {
   host: string;
@@ -42,10 +42,11 @@ const database = actions(
   handle(settingsChangeDatabase, (st: Database, s: string) => ({...st, database: s})),
   handle(settingsChangeUser, (st: Database, s: string) => ({...st, user: s})),
   handle(settingsChangePassword, (st: Database, s: string) => ({...st, password: s})),
-  handle(databaseSetup, (st: Database): Database => ({
+  handle(databasePool, (st: Database): Database => ({
     ...st, pool: new Pool({
       host: st.host,
       port: st.port,
+      database: st.database,
       user: st.user,
       password: st.password,
     }),

@@ -63,8 +63,8 @@ const Settings = () => {
                 onChange={({target: {value}}: Ev) => dispatch(settingsChangePassword(value))}/>
       <Button onClick={() => dispatch(databaseSetup())}>Connect</Button>
     </form>
-    {testResult === true && <Typography><CheckIcon/> PostgreSQL version {testMsg}</Typography>}
-    {testResult === true && <Typography><ErrorIcon/> Could not connect: {testMsg}</Typography>}
+    {testResult === true && <Typography><CheckIcon/> Server version: {testMsg}</Typography>}
+    {testResult === false && <Typography><ErrorIcon/> Could not connect: {testMsg}</Typography>}
   </Paper>;
 };
 
