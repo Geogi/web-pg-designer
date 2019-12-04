@@ -13,8 +13,15 @@ import * as React from "react";
 import SettingsIcon from "@material-ui/icons/Settings";
 import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import ListAltIcon from "@material-ui/icons/ListAlt";
+import SettingsBackupRestoreIcon from "@material-ui/icons/SettingsBackupRestore";
 import {useDispatch, useSelector} from "react-redux";
-import {mobileMenuClose, navigateCurrentRelation, navigateRelations, navigateSettings} from "../actions/actions";
+import {
+  mobileMenuClose,
+  navigateCurrentRelation,
+  navigateRelations,
+  navigateSettings,
+  stateReset
+} from "../actions/actions";
 import {DrawerProps} from "@material-ui/core/Drawer";
 import {Root} from "../reducers/root";
 
@@ -58,6 +65,10 @@ const DrawerBase = (props: DrawerProps) => {
       <ListItem button key="settings" onClick={() => dispatch(navigateSettings())} selected={page === "settings"}>
         <ListItemIcon><SettingsIcon/></ListItemIcon>
         <ListItemText primary="Settings"/>
+      </ListItem>
+      <ListItem button key="invalidate" onClick={() => dispatch(stateReset())}>
+        <ListItemIcon><SettingsBackupRestoreIcon/></ListItemIcon>
+        <ListItemText primary="Invalidate"/>
       </ListItem>
     </List>
   </Drawer>;

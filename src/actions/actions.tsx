@@ -1,6 +1,8 @@
 import {createAction} from "../utils/actionReduce";
 import {Table} from "../reducers/database";
 
+export const stateReset = createAction("STATE/RESET");
+
 export const mobileMenuToggle = createAction("MOBILE_MENU/TOGGLE");
 export const mobileMenuClose = createAction("MOBILE_MENU/CLOSE");
 

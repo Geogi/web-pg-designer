@@ -8,7 +8,8 @@ import {
   settingsChangeHost,
   settingsChangePassword,
   settingsChangePort,
-  settingsChangeUser
+  settingsChangeUser,
+  stateReset
 } from "../actions/actions";
 import {Pool} from "pg";
 
@@ -69,6 +70,7 @@ const init: Database = {
 
 const database = actions(
   init,
+  handle(stateReset, () => init),
   handle(settingsChangeHost, (st: Database, s: string) => ({...st, fieldHost: s})),
   handle(settingsChangePort, (st: Database, n: number) => ({...st, fieldPort: n})),
   handle(settingsChangeDatabase, (st: Database, s: string) => ({...st, fieldDatabase: s})),
