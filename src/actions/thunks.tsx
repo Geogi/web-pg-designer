@@ -5,7 +5,11 @@ import {Table} from "../reducers/database";
 import {showPrimaryKeys} from "../utils/queries/showPrimaryKeys";
 import {showColumns} from "../utils/queries/showColumns";
 
-const endPool = (state: Root) => state.database.pool !== null && state.database.pool.end();
+const endPool = async (state: Root) => {
+  if (state.database.pool !== null) {
+    await state.database.pool.end();
+  }
+};
 
 export const databaseStart = () => async (dispatch: Function, getState: () => Root) => {
   await endPool(getState());
