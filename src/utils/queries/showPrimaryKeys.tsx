@@ -6,4 +6,5 @@ FROM information_schema.table_constraints tc
                   AND tc.constraint_schema = kcu.constraint_schema
 WHERE tc.table_name = '${table}'
   AND tc.table_schema = 'public'
-  AND tc.constraint_type = 'PRIMARY KEY'`;
+  AND tc.constraint_type = 'PRIMARY KEY';
+`;

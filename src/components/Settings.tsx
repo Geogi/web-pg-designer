@@ -1,6 +1,5 @@
-import {Button, Card, CardContent, createStyles, makeStyles, TextField, Theme, Typography} from "@material-ui/core";
+import {Button, Card, CardContent, Typography} from "@material-ui/core";
 import * as React from "react";
-import {OutlinedTextFieldProps} from "@material-ui/core/TextField";
 import {useDispatch, useSelector} from "react-redux";
 import {
   settingsChangeDatabase,
@@ -13,25 +12,8 @@ import {defaultPort} from "../reducers/database";
 import {Root} from "../reducers/root";
 import CheckIcon from "@material-ui/icons/Check";
 import ErrorIcon from "@material-ui/icons/Error";
-import {databaseStart} from "../actions/thunks";
-
-const useStyles = makeStyles((theme: Theme) => createStyles({
-  inputField: {
-    margin: theme.spacing(1),
-  },
-  button: {
-    margin: theme.spacing(2),
-  },
-  form: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-}));
-
-const Outlined = (props: Omit<OutlinedTextFieldProps, "variant">) =>
-  <TextField variant="outlined" margin="normal" autoComplete="off" {...props}/>;
-
-type Ev = React.ChangeEvent<HTMLInputElement>;
+import {databaseStart} from "../actions/thunks/database";
+import {Ev, Outlined, useFormStyles} from "./utils/forms";
 
 // noinspection DuplicatedCode
 const Settings = () => {
@@ -45,7 +27,7 @@ const Settings = () => {
   const user = useSelector((st: Root) => st.database.user);
   const host = useSelector((st: Root) => st.database.host);
   const database = useSelector((st: Root) => st.database.database);
-  const classes = useStyles();
+  const classes = useFormStyles();
   const dispatch = useDispatch();
 
   return <Card>

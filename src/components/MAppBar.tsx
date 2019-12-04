@@ -17,7 +17,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import {useDispatch, useSelector} from "react-redux";
 import {mobileMenuToggle, navigateRelations, navigateSettings, navigateWelcome} from "../actions/actions";
 import {Root} from "../reducers/root";
-import {databaseStop} from "../actions/thunks";
+import {databaseStop} from "../actions/thunks/database";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   appBar: {

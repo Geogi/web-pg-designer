@@ -22,3 +22,8 @@ export const databasePool = createAction("DATABASE/POOL");
 export const databaseErr = createAction("DATABASE/ERR", (s: string) => s);
 export const databaseOk = createAction("DATABASE/OK", (p: [string, Table[]]) => p);
 export const databaseEnd = createAction("DATABASE/END");
+
+export const relationsAddOpen = createAction("RELATIONS/ADD/OPEN");
+export const relationsAddClose = createAction("RELATIONS/ADD/CLOSE");
+export const relationsAddChangeName = createAction("RELATIONS/ADD/CHANGE/NAME", (s: string) => s);
+export const relationsAddErr = createAction("RELATIONS/ADD/ERR", (s: string) => s);
