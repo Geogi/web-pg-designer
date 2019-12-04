@@ -5,7 +5,7 @@ require("electron-reload")(resolve(__dirname, "..", "dist"), {
   electron: resolve(__dirname, "..", "node_modules", ".bin", "electron"),
 });
 
-const createWindow = () => {
+const createWindow = async () => {
   let win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -14,11 +14,9 @@ const createWindow = () => {
     },
   });
 
-  win.loadFile(resolve(__dirname, "..", "dist", "index.html")).then();
+  await win.loadFile(resolve(__dirname, "..", "dist", "index.html"));
 };
 
-const init = () => {
-  createWindow();
-};
-
-app.on('ready', init);
+app.whenReady()
+  .then(createWindow)
+  .catch(process.stderr.write);

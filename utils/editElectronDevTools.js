@@ -1,29 +1,20 @@
-// noinspection JSUnusedLocalSymbols
-const os = require("os");
-// noinspection JSUnusedLocalSymbols
-const path = require("path");
+const {BrowserWindow, app} = require("electron");
 
 // noinspection JSUnusedLocalSymbols
-const {BrowserWindow, app, session} = require('electron');
+const {default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS} = require("electron-devtools-installer");
 
 // noinspection SpellCheckingInspection
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   // Show extensions
-  // console.log(BrowserWindow.getDevToolsExtensions());
+  console.log(BrowserWindow.getDevToolsExtensions());
 
   // Remove extensions
-  // ["React Developer Tools", "Redux DevTools"].map((n) =>
-  //   BrowserWindow.removeDevToolsExtension(n));
+  // BrowserWindow.removeDevToolsExtension("React Developer Tools");
+  // BrowserWindow.removeDevToolsExtension("Redux DevTools");
 
-  // Add React
-  // BrowserWindow.addDevToolsExtension(
-  //   path.join(os.homedir(), '/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.0.5_0')
-  // );
-
-  // Add Redux
-  // BrowserWindow.addDevToolsExtension(
-  //   path.join(os.homedir(), '/Library/Application Support/Google/Chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.17.0_0')
-  // );
+  // Add extensions
+  // await installExtension(REACT_DEVELOPER_TOOLS);
+  // await installExtension(REDUX_DEVTOOLS);
 
   new BrowserWindow({
     height: 480,

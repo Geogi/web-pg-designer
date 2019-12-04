@@ -1,6 +1,6 @@
 import {app, BrowserWindow} from "electron";
 
-const createWindow = () => {
+const createWindow = async () => {
   let win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -9,11 +9,9 @@ const createWindow = () => {
     },
   });
 
-  win.loadFile("index.html").then();
+  await win.loadFile("index.html");
 };
 
-const init = () => {
-  createWindow();
-};
-
-app.on("ready", init);
+app.whenReady()
+  .then(createWindow)
+  .catch(process.stderr.write);
