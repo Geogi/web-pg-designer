@@ -1,15 +1,28 @@
 import {combineReducers} from "redux";
 import navigation, {Navigation} from "./navigation";
 import database, {Database} from "./database";
+import storage from "redux-persist/lib/storage";
+import {PersistPartial} from "../utils/persist";
+import {persistReducer} from "redux-persist";
 
-export interface Root {
+interface RootPure {
   navigation: Navigation;
   database: Database;
 }
 
-const root = combineReducers<Root>({
+const rootPure = combineReducers<RootPure>({
   navigation,
-  database
+  database,
 });
+
+const persistConfig = {
+  key: "root",
+  storage,
+  blacklist: ["database"],
+};
+
+export type Root = RootPure & PersistPartial;
+
+const root = persistReducer(persistConfig, rootPure);
 
 export default root;

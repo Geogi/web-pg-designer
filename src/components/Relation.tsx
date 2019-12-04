@@ -22,8 +22,8 @@ import KeyboardCapslockIcon from "@material-ui/icons/KeyboardCapslock";
 
 const formatType = (c: Column) => {
   const attributes = [];
-  c.nullable && attributes.push('nullable');
-  c.primaryKey && attributes.push('primary key');
+  c.nullable && attributes.push("nullable");
+  c.primaryKey && attributes.push("primary key");
   return c.type + (attributes.length > 0 && ` (${attributes.join(", ")})`);
 };
 

@@ -6,19 +6,13 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {Provider} from "react-redux";
 import "typeface-roboto";
 import {PersistGate} from "redux-persist/integration/react";
-import {persistReducer, persistStore} from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import {persistStore} from "redux-persist";
 
 import root from "./reducers/root";
 import App from "./components/App";
 
-const persistConfig = {
-  key: 'root',
-  storage,
-};
-
 const store = createStore(
-  persistReducer(persistConfig, root),
+  root,
   composeWithDevTools(
     applyMiddleware(thunk)
   )
