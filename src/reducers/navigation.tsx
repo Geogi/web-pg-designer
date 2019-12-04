@@ -8,7 +8,8 @@ import {
   navigateRelation,
   navigateRelations,
   navigateSettings,
-  navigateWelcome
+  navigateWelcome,
+  stateReset
 } from "../actions/actions";
 
 export type Page = "welcome" | "settings" | "relations" | "relation";
@@ -27,6 +28,7 @@ const init: Navigation = {
 
 const navigation = actions(
   init,
+  handle(stateReset, () => init),
   handle(mobileMenuToggle, (st: Navigation) => ({...st, mobileMenuOpen: !st.mobileMenuOpen})),
   handle(mobileMenuClose, (st: Navigation): Navigation => ({...st, mobileMenuOpen: false})),
   handle(navigateSettings, (st: Navigation): Navigation => ({...st, page: "settings", mobileMenuOpen: false})),
