@@ -14,4 +14,4 @@ const createWindow = async () => {
 
 app.whenReady()
   .then(createWindow)
-  .catch(process.stderr.write);
+  .catch((e) => process.stderr.write(e.toString()));

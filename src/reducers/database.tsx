@@ -107,12 +107,8 @@ export type Database = DatabasePure & PersistPartial;
 const persistConfig = {
   key: "database",
   storage: storage,
-  whitelist: [
-    "fieldHost",
-    "fieldPort",
-    "fieldDatabase",
-    "fieldUser",
-    "fieldPassword",
+  blacklist: [
+    "pool",
   ]
 };
 
