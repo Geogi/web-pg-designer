@@ -1,5 +1,5 @@
 import {Root} from "../../reducers/root";
-import {databaseEnd, databaseErr, databaseOk, databasePool, navigateRelations} from "../actions";
+import {databaseEnd, databaseErr, databaseOk, databasePool, navigatePage} from "../actions";
 import {countRows, selectVersion, showTables} from "../../utils/queries";
 import {Table} from "../../reducers/database";
 import {showPrimaryKeys} from "../../utils/queries/showPrimaryKeys";
@@ -39,7 +39,7 @@ export const databaseStart = (auto?: boolean) => async (dispatch: Function, getS
     }));
     dispatch(databaseOk([version, tables]));
     if (!auto) {
-      dispatch(navigateRelations())
+      dispatch(navigatePage("relation"))
     }
   } catch(err) {
     dispatch(databaseErr(err.toString()));

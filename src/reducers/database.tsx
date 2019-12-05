@@ -6,11 +6,11 @@ import {
   databaseErr,
   databaseOk,
   databasePool,
-  settingsChangeDatabase,
-  settingsChangeHost,
-  settingsChangePassword,
-  settingsChangePort,
-  settingsChangeUser,
+  settingsDatabase,
+  settingsHost,
+  settingsPassword,
+  settingsPort,
+  settingsUser,
   stateReset
 } from "../actions/actions";
 import {Pool} from "pg";
@@ -75,11 +75,11 @@ const init: DatabasePure = {
 const databasePure = actions(
   init,
   handle(stateReset, () => init),
-  handle(settingsChangeHost, (st: DatabasePure, s: string) => ({...st, fieldHost: s})),
-  handle(settingsChangePort, (st: DatabasePure, n: number) => ({...st, fieldPort: n})),
-  handle(settingsChangeDatabase, (st: DatabasePure, s: string) => ({...st, fieldDatabase: s})),
-  handle(settingsChangeUser, (st: DatabasePure, s: string) => ({...st, fieldUser: s})),
-  handle(settingsChangePassword, (st: DatabasePure, s: string) => ({...st, fieldPassword: s})),
+  handle(settingsHost, (st: DatabasePure, s: string) => ({...st, fieldHost: s})),
+  handle(settingsPort, (st: DatabasePure, n: number) => ({...st, fieldPort: n})),
+  handle(settingsDatabase, (st: DatabasePure, s: string) => ({...st, fieldDatabase: s})),
+  handle(settingsUser, (st: DatabasePure, s: string) => ({...st, fieldUser: s})),
+  handle(settingsPassword, (st: DatabasePure, s: string) => ({...st, fieldPassword: s})),
   handle(databasePool, (st: DatabasePure): DatabasePure => {
     const host = st.fieldHost;
     const port = st.fieldPort;

@@ -4,11 +4,8 @@ import {
   databaseErr,
   mobileMenuClose,
   mobileMenuToggle,
-  navigateCurrentRelation,
+  navigatePage,
   navigateRelation,
-  navigateRelations,
-  navigateSettings,
-  navigateWelcome,
   stateReset
 } from "../actions/actions";
 
@@ -31,14 +28,9 @@ const navigation = actions(
   handle(stateReset, () => init),
   handle(mobileMenuToggle, (st: Navigation) => ({...st, mobileMenuOpen: !st.mobileMenuOpen})),
   handle(mobileMenuClose, (st: Navigation): Navigation => ({...st, mobileMenuOpen: false})),
-  handle(navigateSettings, (st: Navigation): Navigation => ({...st, page: "settings", mobileMenuOpen: false})),
-  handle(navigateWelcome, (st: Navigation): Navigation => ({...st, page: "welcome"})),
-  handle(navigateRelations, (st: Navigation): Navigation =>
-    ({...st, page: "relations", mobileMenuOpen: false})),
+  handle(navigatePage, (st: Navigation, page: Page): Navigation => ({...st, page, mobileMenuOpen: false})),
   handle(navigateRelation, (st: Navigation, relation: string): Navigation =>
-    ({...st, page: "relation", relation})),
-  handle(navigateCurrentRelation, (st: Navigation): Navigation =>
-    ({...st, page: "relation", mobileMenuOpen: false})),
+    ({...st, page: "relation", relation, mobileMenuOpen: false})),
   handle(databaseEnd, (st: Navigation): Navigation => ({...st, page: "settings"})),
   handle(databaseErr, (st: Navigation): Navigation => ({...st, page: "settings"})),
 );

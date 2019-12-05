@@ -1,31 +1,24 @@
 import {actions, handle} from "../utils/actionReduce";
-import {
-  relationsAddChangeName,
-  relationsAddClose,
-  relationsAddErr,
-  relationsAddOpen,
-  stateReset
-} from "../actions/actions";
+import {relationsCreateErr, relationsCreateName, relationsCreateShow, stateReset} from "../actions/actions";
 
 export interface Relations {
-  showAddDialog: boolean;
-  newRelName: string;
-  newRelError: string;
+  createShow: boolean;
+  createName: string;
+  createErr: string;
 }
 
 const init: Relations = {
-  showAddDialog: false,
-  newRelName: "",
-  newRelError: "",
+  createShow: false,
+  createName: "",
+  createErr: "",
 };
 
 const relations = actions(
   init,
   handle(stateReset, () => init),
-  handle(relationsAddOpen, (st: Relations) => ({...st, showAddDialog: true})),
-  handle(relationsAddClose, (st: Relations) => ({...st, showAddDialog: false})),
-  handle(relationsAddChangeName, (st: Relations, newRelName: string) => ({...st, newRelName})),
-  handle(relationsAddErr, (st: Relations, newRelError: string) => ({...st, newRelError})),
+  handle(relationsCreateShow, (st: Relations, createShow: boolean) => ({...st, createShow})),
+  handle(relationsCreateName, (st: Relations, createName: string) => ({...st, createName})),
+  handle(relationsCreateErr, (st: Relations, createErr: string) => ({...st, createErr})),
 );
 
 export default relations;

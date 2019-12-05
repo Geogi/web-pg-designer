@@ -1,13 +1,7 @@
 import {Button, Card, CardContent, Typography} from "@material-ui/core";
 import * as React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {
-  settingsChangeDatabase,
-  settingsChangeHost,
-  settingsChangePassword,
-  settingsChangePort,
-  settingsChangeUser
-} from "../actions/actions";
+import {settingsDatabase, settingsHost, settingsPassword, settingsPort, settingsUser} from "../actions/actions";
 import {defaultPort} from "../reducers/database";
 import {Root} from "../reducers/root";
 import CheckIcon from "@material-ui/icons/Check";
@@ -35,15 +29,15 @@ const Settings = () => {
       <Typography variant="h5">Settings</Typography>
       <form className={classes.form} noValidate autoComplete="off">
         <Outlined label="Host" className={classes.inputField} value={fieldHost}
-                  onChange={({target: {value}}: Ev) => dispatch(settingsChangeHost(value))}/>
+                  onChange={({target: {value}}: Ev) => dispatch(settingsHost(value))}/>
         <Outlined label="Port" className={classes.inputField} type="number" value={fieldPort}
-                  onChange={({target: {value}}: Ev) => dispatch(settingsChangePort(parseInt(value) || defaultPort))}/>
+                  onChange={({target: {value}}: Ev) => dispatch(settingsPort(parseInt(value) || defaultPort))}/>
         <Outlined label="Database" className={classes.inputField} value={fieldDatabase}
-                  onChange={({target: {value}}: Ev) => dispatch(settingsChangeDatabase(value))}/>
+                  onChange={({target: {value}}: Ev) => dispatch(settingsDatabase(value))}/>
         <Outlined label="User" className={classes.inputField} value={fieldUser}
-                  onChange={({target: {value}}: Ev) => dispatch(settingsChangeUser(value))}/>
+                  onChange={({target: {value}}: Ev) => dispatch(settingsUser(value))}/>
         <Outlined label="Password" className={classes.inputField} type="password" value={fieldPassword}
-                  onChange={({target: {value}}: Ev) => dispatch(settingsChangePassword(value))}/>
+                  onChange={({target: {value}}: Ev) => dispatch(settingsPassword(value))}/>
         <Button className={classes.button} variant="contained" color="primary"
                 onClick={() => dispatch(databaseStart())}>
           {connected ? "Reconnect" : "Connect"}

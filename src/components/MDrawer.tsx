@@ -15,13 +15,7 @@ import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import SettingsBackupRestoreIcon from "@material-ui/icons/SettingsBackupRestore";
 import {useDispatch, useSelector} from "react-redux";
-import {
-  mobileMenuClose,
-  navigateCurrentRelation,
-  navigateRelations,
-  navigateSettings,
-  stateReset
-} from "../actions/actions";
+import {mobileMenuClose, navigatePage, stateReset} from "../actions/actions";
 import {DrawerProps} from "@material-ui/core/Drawer";
 import {Root} from "../reducers/root";
 
@@ -52,17 +46,17 @@ const DrawerBase = (props: DrawerProps) => {
 
   return <Drawer className={classes.drawer} classes={{paper: classes.drawerPaper}} {...props}>
     <List>
-      <ListItem button key="relations" onClick={() => dispatch(navigateRelations())} disabled={!connected}
+      <ListItem button key="relations" onClick={() => dispatch(navigatePage("relations"))} disabled={!connected}
                 selected={page === "relations"}>
         <ListItemIcon><ViewComfyIcon/></ListItemIcon>
         <ListItemText primary="Relations"/>
       </ListItem>
-      <ListItem button key="relation" onClick={() => dispatch(navigateCurrentRelation())} disabled={relation === null}
+      <ListItem button key="relation" onClick={() => dispatch(navigatePage("relation"))} disabled={relation === null}
                 selected={page === "relation"}>
         <ListItemIcon><ListAltIcon/></ListItemIcon>
         <ListItemText primary="Relation details"/>
       </ListItem>
-      <ListItem button key="settings" onClick={() => dispatch(navigateSettings())} selected={page === "settings"}>
+      <ListItem button key="settings" onClick={() => dispatch(navigatePage("settings"))} selected={page === "settings"}>
         <ListItemIcon><SettingsIcon/></ListItemIcon>
         <ListItemText primary="Settings"/>
       </ListItem>
