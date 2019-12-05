@@ -1,5 +1,6 @@
 const {resolve} = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const {IgnorePlugin} = require("webpack");
 
 const common = {
   mode: "development",
@@ -51,6 +52,7 @@ const common = {
       template: resolve(__dirname, "public/index.html"),
       excludeChunks: ["main"],
     }),
+    new IgnorePlugin(/^pg-native$/),
   ],
 };
 
