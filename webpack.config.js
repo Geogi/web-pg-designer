@@ -1,6 +1,6 @@
-const {resolve} = require("path");
+const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const {IgnorePlugin} = require("webpack");
+const { IgnorePlugin } = require("webpack");
 
 const common = {
   mode: "development",
@@ -26,19 +26,19 @@ const common = {
       },
       {
         test: /\.html$/,
-        loader: 'html-loader',
+        loader: "html-loader",
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: 'url-loader',
+        loader: "url-loader",
       },
       {
         test: /\.node$/,
-        loader: 'node-loader',
+        loader: "node-loader",
       },
       {
         enforce: "pre",
@@ -56,18 +56,24 @@ const common = {
   ],
 };
 
-const main = Object.assign({
-  target: "electron-main",
-  entry: {
-    main: resolve(__dirname, "src/main.tsx"),
+const main = Object.assign(
+  {
+    target: "electron-main",
+    entry: {
+      main: resolve(__dirname, "src/main.tsx"),
+    },
   },
-}, common);
+  common
+);
 
-const app = Object.assign({
-  target: "electron-renderer",
-  entry: {
-    app: resolve(__dirname, "src/app.tsx"),
+const app = Object.assign(
+  {
+    target: "electron-renderer",
+    entry: {
+      app: resolve(__dirname, "src/app.tsx"),
+    },
   },
-}, common);
+  common
+);
 
 module.exports = [main, app];
