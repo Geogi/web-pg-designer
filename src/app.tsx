@@ -8,15 +8,10 @@ import "typeface-roboto";
 import {PersistGate} from "redux-persist/integration/react";
 import {persistStore} from "redux-persist";
 
-import root from "./reducers/root";
-import App from "./components/App";
+import {root} from "./reducers/root";
+import {App} from "./components/App";
 
-const store = createStore(
-  root,
-  composeWithDevTools(
-    applyMiddleware(thunk)
-  )
-);
+const store = createStore(root, composeWithDevTools(applyMiddleware(thunk)));
 
 const persist = persistStore(store);
 

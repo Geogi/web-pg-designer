@@ -1,4 +1,4 @@
-import storage from "redux-persist/lib/storage"
+import storage from "redux-persist/lib/storage";
 
 import {actions, handle} from "../utils/actionReduce";
 import {
@@ -11,7 +11,7 @@ import {
   settingsPassword,
   settingsPort,
   settingsUser,
-  stateReset
+  stateReset,
 } from "../actions/actions";
 import {Pool} from "pg";
 import {persistReducer} from "redux-persist";
@@ -75,43 +75,75 @@ const init: DatabasePure = {
 const databasePure = actions(
   init,
   handle(stateReset, () => init),
-  handle(settingsHost, (st: DatabasePure, s: string) => ({...st, fieldHost: s})),
-  handle(settingsPort, (st: DatabasePure, n: number) => ({...st, fieldPort: n})),
-  handle(settingsDatabase, (st: DatabasePure, s: string) => ({...st, fieldDatabase: s})),
-  handle(settingsUser, (st: DatabasePure, s: string) => ({...st, fieldUser: s})),
-  handle(settingsPassword, (st: DatabasePure, s: string) => ({...st, fieldPassword: s})),
-  handle(databasePool, (st: DatabasePure): DatabasePure => {
-    const host = st.fieldHost;
-    const port = st.fieldPort;
-    const database = st.fieldDatabase;
-    const user = st.fieldUser;
-    const password = st.fieldPassword;
-    return {
-      ...st, host, port, database, user, password,
-      pool: new Pool({host, port, database, user, password,}),
-      connected: null,
-    };
-  }),
-  handle(databaseOk, (st: DatabasePure, [msg, tables]: [string, Table[]]): DatabasePure => ({
+  handle(settingsHost, (st: DatabasePure, s: string) => ({
     ...st,
-    connected: true,
-    testResult: msg,
-    tables
+    fieldHost: s,
   })),
-  handle(databaseErr, (st: DatabasePure, err: string): DatabasePure => ({...st, connected: false, testResult: err})),
-  handle(databaseEnd, (st: DatabasePure): DatabasePure => ({...st, pool: null, connected: null})),
+  handle(settingsPort, (st: DatabasePure, n: number) => ({
+    ...st,
+    fieldPort: n,
+  })),
+  handle(settingsDatabase, (st: DatabasePure, s: string) => ({
+    ...st,
+    fieldDatabase: s,
+  })),
+  handle(settingsUser, (st: DatabasePure, s: string) => ({
+    ...st,
+    fieldUser: s,
+  })),
+  handle(settingsPassword, (st: DatabasePure, s: string) => ({
+    ...st,
+    fieldPassword: s,
+  })),
+  handle(
+    databasePool,
+    (st: DatabasePure): DatabasePure => {
+      const host = st.fieldHost;
+      const port = st.fieldPort;
+      const database = st.fieldDatabase;
+      const user = st.fieldUser;
+      const password = st.fieldPassword;
+      return {
+        ...st,
+        host,
+        port,
+        database,
+        user,
+        password,
+        pool: new Pool({host, port, database, user, password}),
+        connected: null,
+      };
+    }
+  ),
+  handle(
+    databaseOk,
+    (st: DatabasePure, [msg, tables]: [string, Table[]]): DatabasePure => ({
+      ...st,
+      connected: true,
+      testResult: msg,
+      tables,
+    })
+  ),
+  handle(
+    databaseErr,
+    (st: DatabasePure, err: string): DatabasePure => ({
+      ...st,
+      connected: false,
+      testResult: err,
+    })
+  ),
+  handle(
+    databaseEnd,
+    (st: DatabasePure): DatabasePure => ({...st, pool: null, connected: null})
+  )
 );
 
 export type Database = DatabasePure & PersistPartial;
 
 const persistConfig = {
   key: "database",
-  storage: storage,
-  blacklist: [
-    "pool",
-  ]
+  storage,
+  blacklist: ["pool"],
 };
 
-const database = persistReducer(persistConfig, databasePure);
-
-export default database;
+export const database = persistReducer(persistConfig, databasePure);

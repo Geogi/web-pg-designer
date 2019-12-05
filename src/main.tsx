@@ -1,7 +1,7 @@
 import {app, BrowserWindow} from "electron";
 
 const createWindow = async () => {
-  let win = new BrowserWindow({
+  const win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -12,6 +12,7 @@ const createWindow = async () => {
   await win.loadFile("index.html");
 };
 
-app.whenReady()
+app
+  .whenReady()
   .then(createWindow)
-  .catch((e) => process.stderr.write(e.toString()));
+  .catch(e => process.stderr.write(e.toString()));

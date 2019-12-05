@@ -2,7 +2,10 @@ import {Root} from "../../reducers/root";
 import {relationsCreateErr, relationsCreateShow} from "../actions";
 import {createTable} from "../../utils/queries/createTable";
 
-export const relationsCreateSubmit = () => async (dispatch: Function, getState: () => Root) => {
+export const relationsCreateSubmit = () => async (
+  dispatch: Function,
+  getState: () => Root
+) => {
   const pool = getState().database.pool;
   if (pool === null) {
     dispatch(relationsCreateErr("Lost connection pool; try reconnecting."));

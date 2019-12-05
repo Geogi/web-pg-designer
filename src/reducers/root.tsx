@@ -1,10 +1,10 @@
 import {combineReducers} from "redux";
-import navigation, {Navigation} from "./navigation";
-import database, {Database} from "./database";
+import {navigation, Navigation} from "./navigation";
+import {database, Database} from "./database";
 import storage from "redux-persist/lib/storage";
 import {PersistPartial} from "../utils/persist";
 import {persistReducer} from "redux-persist";
-import relations, {Relations} from "./relations";
+import {relations, Relations} from "./relations";
 
 interface RootPure {
   navigation: Navigation;
@@ -26,6 +26,4 @@ const persistConfig = {
 
 export type Root = RootPure & PersistPartial;
 
-const root = persistReducer(persistConfig, rootPure);
-
-export default root;
+export const root = persistReducer(persistConfig, rootPure);

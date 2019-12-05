@@ -1,0 +1,15 @@
+{
+  "extends": "gts/tslint.json",
+  "rules": {
+    "variable-name": {
+      "options": [
+        "allow-pascal-case"
+      ]
+    }
+  },
+  "linterOptions": {
+    "exclude": [
+      "**/*.json"
+    ]
+  }
+}

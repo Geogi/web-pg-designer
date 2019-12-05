@@ -1,5 +1,5 @@
 import {actions, handle} from "../utils/actionReduce";
-import {relationsCreateErr, relationsCreateName, relationsCreateShow, stateReset} from "../actions/actions";
+import {relationsCreateErr, relationsCreateName, relationsCreateShow, stateReset,} from "../actions/actions";
 
 export interface Relations {
   createShow: boolean;
@@ -13,12 +13,19 @@ const init: Relations = {
   createErr: "",
 };
 
-const relations = actions(
+export const relations = actions(
   init,
   handle(stateReset, () => init),
-  handle(relationsCreateShow, (st: Relations, createShow: boolean) => ({...st, createShow})),
-  handle(relationsCreateName, (st: Relations, createName: string) => ({...st, createName})),
-  handle(relationsCreateErr, (st: Relations, createErr: string) => ({...st, createErr})),
+  handle(relationsCreateShow, (st: Relations, createShow: boolean) => ({
+    ...st,
+    createShow,
+  })),
+  handle(relationsCreateName, (st: Relations, createName: string) => ({
+    ...st,
+    createName,
+  })),
+  handle(relationsCreateErr, (st: Relations, createErr: string) => ({
+    ...st,
+    createErr,
+  }))
 );
-
-export default relations;

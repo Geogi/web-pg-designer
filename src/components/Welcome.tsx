@@ -3,18 +3,20 @@ import * as React from "react";
 import {useDispatch} from "react-redux";
 import {navigatePage} from "../actions/actions";
 
-const Welcome = () => {
+export const Welcome = () => {
   const dispatch = useDispatch();
 
-  return <Card>
-    <CardContent>
-      <Typography variant="h5">Welcome</Typography>
-      <Typography variant="body1">
-        <Link onClick={() => dispatch(navigatePage("settings"))}>Connect</Link>
-        {" "}to a database to start modeling.
-      </Typography>
-    </CardContent>
-  </Card>;
+  return (
+    <Card>
+      <CardContent>
+        <Typography variant="h5">Welcome</Typography>
+        <Typography variant="body1">
+          <Link onClick={() => dispatch(navigatePage("settings"))}>
+            Connect
+          </Link>{" "}
+          to a database to start modeling.
+        </Typography>
+      </CardContent>
+    </Card>
+  );
 };
-
-export default Welcome;
