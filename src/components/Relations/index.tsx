@@ -2,9 +2,10 @@ import * as React from "react";
 import { createStyles, Fab, makeStyles, Theme } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import { RelGrid } from "./RelGrid";
-import { RelAddDialog } from "./RelAddDialog";
+import { RelCreateDialog } from "./RelCreateDialog";
 import { useDispatch } from "react-redux";
 import { relationsCreateShow } from "../../actions/actions";
+import { RelDropDialog } from "./RelDropDialog";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,7 +27,8 @@ export const Relations = () => {
       <Fab color="primary" aria-label="add" className={classes.fab}>
         <AddIcon onClick={() => dispatch(relationsCreateShow(true))} />
       </Fab>
-      <RelAddDialog />
+      <RelCreateDialog />
+      <RelDropDialog />
     </React.Fragment>
   );
 };

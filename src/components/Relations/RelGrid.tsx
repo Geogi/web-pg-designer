@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { Table } from "../../reducers/database";
-import { navigateRelation } from "../../actions/actions";
+import { navigateRelation, relationsDropShow } from "../../actions/actions";
 import DeleteIcon from "@material-ui/icons/Delete";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -50,7 +50,11 @@ export const RelGrid = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
+              <Button
+                size="small"
+                color="primary"
+                onClick={() => dispatch(relationsDropShow([true, t.name]))}
+              >
                 <DeleteIcon /> Drop
               </Button>
             </CardActions>

@@ -45,3 +45,11 @@ export const relationsCreateErr = createAction(
   "RELATIONS/CREATE/ERR",
   (s: string) => s
 );
+export const relationsDropShow = createAction(
+  "RELATIONS/DROP/SHOW",
+  (p: [boolean, string]) => p
+);
+export const relationsDropErr = createAction(
+  "RELATIONS/DROP/ERR",
+  (s: string) => s
+);

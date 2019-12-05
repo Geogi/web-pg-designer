@@ -17,7 +17,7 @@ import { Ev, Outlined, useFormStyles } from "../utils/forms";
 import { relationsCreateSubmit } from "../../actions/thunks/relations";
 import ErrorIcon from "@material-ui/icons/Error";
 
-export const RelAddDialog = () => {
+export const RelCreateDialog = () => {
   const dispatch = useDispatch();
   const show = useSelector((st: Root) => st.relations.createShow);
   const name = useSelector((st: Root) => st.relations.createName);
@@ -28,9 +28,9 @@ export const RelAddDialog = () => {
     <Dialog
       open={show}
       onClose={() => dispatch(relationsCreateShow(false))}
-      aria-labelledby="rel-add-dialog-title"
+      aria-labelledby="rel-create-dialog-title"
     >
-      <DialogTitle id="rel-add-dialog-title">New Relation</DialogTitle>
+      <DialogTitle id="rel-create-dialog-title">New Relation</DialogTitle>
       <DialogContent>
         <Outlined
           label="Name"
