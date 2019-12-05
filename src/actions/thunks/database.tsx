@@ -18,7 +18,7 @@ const endPool = async (state: Root) => {
   }
 };
 
-export const databaseStart = (auto?: boolean) => async (
+export const databaseStart = (refresh?: boolean) => async (
   dispatch: Function,
   getState: () => Root
 ) => {
@@ -54,7 +54,7 @@ export const databaseStart = (auto?: boolean) => async (
       })
     );
     dispatch(databaseOk([version, tables]));
-    if (!auto) {
+    if (!refresh) {
       dispatch(navigatePage("relation"));
     }
   } catch (err) {

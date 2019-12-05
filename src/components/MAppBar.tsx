@@ -14,10 +14,11 @@ import {
 } from "@material-ui/core";
 import BrushIcon from "@material-ui/icons/Brush";
 import MenuIcon from "@material-ui/icons/Menu";
+import RefreshIcon from "@material-ui/icons/Refresh";
 import { useDispatch, useSelector } from "react-redux";
 import { mobileMenuToggle, navigatePage } from "../actions/actions";
 import { Root } from "../reducers/root";
-import { databaseStop } from "../actions/thunks/database";
+import { databaseStart, databaseStop } from "../actions/thunks/database";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
     connectionUrl: {
       backgroundColor: theme.palette.primary.dark,
       padding: theme.spacing(1),
+      marginLeft: theme.spacing(1),
     },
   })
 );
@@ -78,6 +80,14 @@ export const MAppBar = () => {
         </Typography>
         {connected ? (
           <React.Fragment>
+            <IconButton
+              edge="end"
+              color="inherit"
+              aria-label="refresh"
+              onClick={() => dispatch(databaseStart(true))}
+            >
+              <RefreshIcon />
+            </IconButton>
             <Hidden smDown>
               <Typography className={classes.connectionUrl}>
                 {dbUser}@{dbHost}/{dbName}
