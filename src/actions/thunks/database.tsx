@@ -55,7 +55,7 @@ export const databaseStart = (refresh?: boolean) => async (
     );
     dispatch(databaseOk([version, tables]));
     if (!refresh) {
-      dispatch(navigatePage("relation"));
+      dispatch(navigatePage("relations"));
     }
   } catch (err) {
     dispatch(databaseErr(err.toString()));
