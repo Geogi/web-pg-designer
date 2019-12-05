@@ -1,10 +1,10 @@
 import * as React from "react";
-import {createStyles, Fab, makeStyles, Theme} from "@material-ui/core";
+import { createStyles, Fab, makeStyles, Theme } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
-import {RelGrid} from "./RelGrid";
-import {RelAddDialog} from "./RelAddDialog";
-import {useDispatch} from "react-redux";
-import {relationsCreateShow} from "../../actions/actions";
+import { RelGrid } from "./RelGrid";
+import { RelAddDialog } from "./RelAddDialog";
+import { useDispatch } from "react-redux";
+import { relationsCreateShow } from "../../actions/actions";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,11 +22,11 @@ export const Relations = () => {
 
   return (
     <React.Fragment>
-      <RelGrid/>
+      <RelGrid />
       <Fab color="primary" aria-label="add" className={classes.fab}>
-        <AddIcon onClick={() => dispatch(relationsCreateShow(true))}/>
+        <AddIcon onClick={() => dispatch(relationsCreateShow(true))} />
       </Fab>
-      <RelAddDialog/>
+      <RelAddDialog />
     </React.Fragment>
   );
 };

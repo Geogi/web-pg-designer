@@ -1,4 +1,4 @@
-import {app, BrowserWindow} from "electron";
+import { app, BrowserWindow } from "electron";
 
 const createWindow = async () => {
   const win = new BrowserWindow({

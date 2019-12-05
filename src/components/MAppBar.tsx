@@ -14,10 +14,10 @@ import {
 } from "@material-ui/core";
 import BrushIcon from "@material-ui/icons/Brush";
 import MenuIcon from "@material-ui/icons/Menu";
-import {useDispatch, useSelector} from "react-redux";
-import {mobileMenuToggle, navigatePage} from "../actions/actions";
-import {Root} from "../reducers/root";
-import {databaseStop} from "../actions/thunks/database";
+import { useDispatch, useSelector } from "react-redux";
+import { mobileMenuToggle, navigatePage } from "../actions/actions";
+import { Root } from "../reducers/root";
+import { databaseStop } from "../actions/thunks/database";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -57,7 +57,7 @@ export const MAppBar = () => {
             aria-label="menu"
             onClick={() => dispatch(mobileMenuToggle())}
           >
-            <MenuIcon/>
+            <MenuIcon />
           </IconButton>
         </Hidden>
         <IconButton
@@ -71,7 +71,7 @@ export const MAppBar = () => {
               : dispatch(navigatePage("welcome"))
           }
         >
-          <BrushIcon/>
+          <BrushIcon />
         </IconButton>
         <Typography variant="h6" className={classes.title}>
           {smUp ? "Database Modeler" : "Modeler"}

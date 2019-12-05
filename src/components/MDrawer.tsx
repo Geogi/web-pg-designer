@@ -14,10 +14,10 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import SettingsBackupRestoreIcon from "@material-ui/icons/SettingsBackupRestore";
-import {useDispatch, useSelector} from "react-redux";
-import {mobileMenuClose, navigatePage, stateReset} from "../actions/actions";
-import {DrawerProps} from "@material-ui/core/Drawer";
-import {Root} from "../reducers/root";
+import { useDispatch, useSelector } from "react-redux";
+import { mobileMenuClose, navigatePage, stateReset } from "../actions/actions";
+import { DrawerProps } from "@material-ui/core/Drawer";
+import { Root } from "../reducers/root";
 
 export const drawerWidth = 240;
 
@@ -49,7 +49,7 @@ const DrawerBase = (props: DrawerProps) => {
   return (
     <Drawer
       className={classes.drawer}
-      classes={{paper: classes.drawerPaper}}
+      classes={{ paper: classes.drawerPaper }}
       {...props}
     >
       <List>
@@ -61,9 +61,9 @@ const DrawerBase = (props: DrawerProps) => {
           selected={page === "relations"}
         >
           <ListItemIcon>
-            <ViewComfyIcon/>
+            <ViewComfyIcon />
           </ListItemIcon>
-          <ListItemText primary="Relations"/>
+          <ListItemText primary="Relations" />
         </ListItem>
         <ListItem
           button
@@ -73,9 +73,9 @@ const DrawerBase = (props: DrawerProps) => {
           selected={page === "relation"}
         >
           <ListItemIcon>
-            <ListAltIcon/>
+            <ListAltIcon />
           </ListItemIcon>
-          <ListItemText primary="Relation details"/>
+          <ListItemText primary="Relation details" />
         </ListItem>
         <ListItem
           button
@@ -84,9 +84,9 @@ const DrawerBase = (props: DrawerProps) => {
           selected={page === "settings"}
         >
           <ListItemIcon>
-            <SettingsIcon/>
+            <SettingsIcon />
           </ListItemIcon>
-          <ListItemText primary="Settings"/>
+          <ListItemText primary="Settings" />
         </ListItem>
         <ListItem
           button
@@ -94,9 +94,9 @@ const DrawerBase = (props: DrawerProps) => {
           onClick={() => dispatch(stateReset())}
         >
           <ListItemIcon>
-            <SettingsBackupRestoreIcon/>
+            <SettingsBackupRestoreIcon />
           </ListItemIcon>
-          <ListItemText primary="Invalidate"/>
+          <ListItemText primary="Invalidate" />
         </ListItem>
       </List>
     </Drawer>
@@ -122,7 +122,7 @@ export const MDrawer = () => {
         />
       </Hidden>
       <Hidden smDown>
-        <DrawerBase variant="permanent"/>
+        <DrawerBase variant="permanent" />
       </Hidden>
     </React.Fragment>
   );

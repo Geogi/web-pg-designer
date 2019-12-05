@@ -1,6 +1,6 @@
 import storage from "redux-persist/lib/storage";
 
-import {actions, handle} from "../utils/actionReduce";
+import { actions, handle } from "../utils/actionReduce";
 import {
   databaseEnd,
   databaseErr,
@@ -13,9 +13,9 @@ import {
   settingsUser,
   stateReset,
 } from "../actions/actions";
-import {Pool} from "pg";
-import {persistReducer} from "redux-persist";
-import {PersistPartial} from "../utils/persist";
+import { Pool } from "pg";
+import { persistReducer } from "redux-persist";
+import { PersistPartial } from "../utils/persist";
 
 interface DatabasePure {
   fieldHost: string;
@@ -110,7 +110,7 @@ const databasePure = actions(
         database,
         user,
         password,
-        pool: new Pool({host, port, database, user, password}),
+        pool: new Pool({ host, port, database, user, password }),
         connected: null,
       };
     }
@@ -134,7 +134,7 @@ const databasePure = actions(
   ),
   handle(
     databaseEnd,
-    (st: DatabasePure): DatabasePure => ({...st, pool: null, connected: null})
+    (st: DatabasePure): DatabasePure => ({ ...st, pool: null, connected: null })
   )
 );
 

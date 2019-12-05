@@ -1,5 +1,5 @@
-const {app, BrowserWindow} = require("electron");
-const {resolve} = require("path");
+const { app, BrowserWindow } = require("electron");
+const { resolve } = require("path");
 
 require("electron-reload")(resolve(__dirname, "..", "dist"), {
   electron: resolve(__dirname, "..", "node_modules", ".bin", "electron"),
@@ -17,6 +17,7 @@ const createWindow = async () => {
   await win.loadFile(resolve(__dirname, "..", "dist", "index.html"));
 };
 
-app.whenReady()
+app
+  .whenReady()
   .then(createWindow)
-  .catch((e) => process.stderr.write(e.toString()));
+  .catch(e => process.stderr.write(e.toString()));

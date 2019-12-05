@@ -1,4 +1,4 @@
-import {actions, handle} from "../utils/actionReduce";
+import { actions, handle } from "../utils/actionReduce";
 import {
   databaseEnd,
   databaseErr,
@@ -32,7 +32,7 @@ export const navigation = actions(
   })),
   handle(
     mobileMenuClose,
-    (st: Navigation): Navigation => ({...st, mobileMenuOpen: false})
+    (st: Navigation): Navigation => ({ ...st, mobileMenuOpen: false })
   ),
   handle(
     navigatePage,
@@ -53,10 +53,10 @@ export const navigation = actions(
   ),
   handle(
     databaseEnd,
-    (st: Navigation): Navigation => ({...st, page: "settings"})
+    (st: Navigation): Navigation => ({ ...st, page: "settings" })
   ),
   handle(
     databaseErr,
-    (st: Navigation): Navigation => ({...st, page: "settings"})
+    (st: Navigation): Navigation => ({ ...st, page: "settings" })
   )
 );

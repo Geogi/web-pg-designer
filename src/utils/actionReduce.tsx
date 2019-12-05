@@ -1,4 +1,4 @@
-import {Action, Reducer} from "redux";
+import { Action, Reducer } from "redux";
 
 interface PayloadAction<P> extends Action<string> {
   payload: P;
@@ -36,14 +36,14 @@ export function createAction<T, P>(
   payloadFn?: Function
 ): Builder<T, P> {
   if (payloadFn === undefined) {
-    return Object.assign(() => ({type}), {type, kind: "nude" as const});
+    return Object.assign(() => ({ type }), { type, kind: "nude" as const });
   } else if (payloadFn.length === 0) {
-    return Object.assign(() => ({type, payload: payloadFn()}), {
+    return Object.assign(() => ({ type, payload: payloadFn() }), {
       type,
       kind: "thunk" as const,
     });
   } else {
-    return Object.assign((arg: T) => ({type, payload: payloadFn(arg)}), {
+    return Object.assign((arg: T) => ({ type, payload: payloadFn(arg) }), {
       type,
       kind: "function" as const,
     });
@@ -65,9 +65,9 @@ export function actions<S>(
 ): Reducer<S> {
   return (previousState: S | undefined, action: UnknownAction<any>) =>
     dar
-      .filter(({type}) => type === action.type)
+      .filter(({ type }) => type === action.type)
       .reduce(
-        (s, {reducer}) => reducer(s || initialState, action.payload),
+        (s, { reducer }) => reducer(s || initialState, action.payload),
         previousState
       ) || initialState;
 }

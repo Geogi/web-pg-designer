@@ -12,9 +12,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import * as React from "react";
-import {useSelector} from "react-redux";
-import {Root} from "../reducers/root";
-import {Column, Table} from "../reducers/database";
+import { useSelector } from "react-redux";
+import { Root } from "../reducers/root";
+import { Column, Table } from "../reducers/database";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import DeleteIcon from "@material-ui/icons/Delete";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
@@ -57,26 +57,26 @@ export const Relation = () => {
                 <Avatar>
                   {!c.primaryKey ? (
                     c.nullable ? (
-                      <KeyboardCapslockIcon/>
+                      <KeyboardCapslockIcon />
                     ) : (
-                      <KeyboardArrowUpIcon/>
+                      <KeyboardArrowUpIcon />
                     )
                   ) : (
-                    <VpnKeyIcon/>
+                    <VpnKeyIcon />
                   )}
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary={c.name} secondary={formatType(c)}/>
+              <ListItemText primary={c.name} secondary={formatType(c)} />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
-                  <DeleteIcon/>
+                  <DeleteIcon />
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
           ))}
         </List>
       </CardContent>
-      <CardActions/>
+      <CardActions />
     </Card>
   );
 };

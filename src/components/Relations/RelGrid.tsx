@@ -10,12 +10,12 @@ import {
   Theme,
   Typography,
 } from "@material-ui/core";
-import {Table} from "../../reducers/database";
-import {navigateRelation} from "../../actions/actions";
+import { Table } from "../../reducers/database";
+import { navigateRelation } from "../../actions/actions";
 import DeleteIcon from "@material-ui/icons/Delete";
 import * as React from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {Root} from "../../reducers/root";
+import { useDispatch, useSelector } from "react-redux";
+import { Root } from "../../reducers/root";
 
 const cardWidth = 200;
 
@@ -51,7 +51,7 @@ export const RelGrid = () => {
             </CardActionArea>
             <CardActions>
               <Button size="small" color="primary">
-                <DeleteIcon/> Drop
+                <DeleteIcon /> Drop
               </Button>
             </CardActions>
           </Card>

@@ -1,10 +1,10 @@
-import {combineReducers} from "redux";
-import {navigation, Navigation} from "./navigation";
-import {database, Database} from "./database";
+import { combineReducers } from "redux";
+import { navigation, Navigation } from "./navigation";
+import { database, Database } from "./database";
 import storage from "redux-persist/lib/storage";
-import {PersistPartial} from "../utils/persist";
-import {persistReducer} from "redux-persist";
-import {relations, Relations} from "./relations";
+import { PersistPartial } from "../utils/persist";
+import { persistReducer } from "redux-persist";
+import { relations, Relations } from "./relations";
 
 interface RootPure {
   navigation: Navigation;

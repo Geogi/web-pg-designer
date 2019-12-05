@@ -1,13 +1,19 @@
-import {Button, Card, CardContent, Typography} from "@material-ui/core";
+import { Button, Card, CardContent, Typography } from "@material-ui/core";
 import * as React from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {settingsDatabase, settingsHost, settingsPassword, settingsPort, settingsUser,} from "../actions/actions";
-import {defaultPort} from "../reducers/database";
-import {Root} from "../reducers/root";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  settingsDatabase,
+  settingsHost,
+  settingsPassword,
+  settingsPort,
+  settingsUser,
+} from "../actions/actions";
+import { defaultPort } from "../reducers/database";
+import { Root } from "../reducers/root";
 import CheckIcon from "@material-ui/icons/Check";
 import ErrorIcon from "@material-ui/icons/Error";
-import {databaseStart} from "../actions/thunks/database";
-import {Ev, Outlined, useFormStyles} from "./utils/forms";
+import { databaseStart } from "../actions/thunks/database";
+import { Ev, Outlined, useFormStyles } from "./utils/forms";
 
 export const Settings = () => {
   const connected = useSelector((st: Root) => st.database.connected);
@@ -32,7 +38,7 @@ export const Settings = () => {
             label="Host"
             className={classes.inputField}
             value={fieldHost}
-            onChange={({target: {value}}: Ev) =>
+            onChange={({ target: { value } }: Ev) =>
               dispatch(settingsHost(value))
             }
           />
@@ -41,7 +47,7 @@ export const Settings = () => {
             className={classes.inputField}
             type="number"
             value={fieldPort}
-            onChange={({target: {value}}: Ev) =>
+            onChange={({ target: { value } }: Ev) =>
               dispatch(settingsPort(Number(value) || defaultPort))
             }
           />
@@ -49,7 +55,7 @@ export const Settings = () => {
             label="Database"
             className={classes.inputField}
             value={fieldDatabase}
-            onChange={({target: {value}}: Ev) =>
+            onChange={({ target: { value } }: Ev) =>
               dispatch(settingsDatabase(value))
             }
           />
@@ -57,7 +63,7 @@ export const Settings = () => {
             label="User"
             className={classes.inputField}
             value={fieldUser}
-            onChange={({target: {value}}: Ev) =>
+            onChange={({ target: { value } }: Ev) =>
               dispatch(settingsUser(value))
             }
           />
@@ -66,7 +72,7 @@ export const Settings = () => {
             className={classes.inputField}
             type="password"
             value={fieldPassword}
-            onChange={({target: {value}}: Ev) =>
+            onChange={({ target: { value } }: Ev) =>
               dispatch(settingsPassword(value))
             }
           />
@@ -81,13 +87,13 @@ export const Settings = () => {
         </form>
         {connected === true && (
           <Typography>
-            <CheckIcon/> Connected to {user}@{host}/{database}. Server version:{" "}
+            <CheckIcon /> Connected to {user}@{host}/{database}. Server version:{" "}
             {testResult}
           </Typography>
         )}
         {connected === false && (
           <Typography>
-            <ErrorIcon/> Could not connect: {testResult}
+            <ErrorIcon /> Could not connect: {testResult}
           </Typography>
         )}
       </CardContent>

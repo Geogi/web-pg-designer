@@ -1,5 +1,10 @@
-import {actions, handle} from "../utils/actionReduce";
-import {relationsCreateErr, relationsCreateName, relationsCreateShow, stateReset,} from "../actions/actions";
+import { actions, handle } from "../utils/actionReduce";
+import {
+  relationsCreateErr,
+  relationsCreateName,
+  relationsCreateShow,
+  stateReset,
+} from "../actions/actions";
 
 export interface Relations {
   createShow: boolean;

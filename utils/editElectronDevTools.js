@@ -1,7 +1,11 @@
-const {BrowserWindow, app} = require("electron");
+const { BrowserWindow, app } = require("electron");
 
 // noinspection JSUnusedLocalSymbols
-const {default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS} = require("electron-devtools-installer");
+const {
+  default: installExtension,
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS,
+} = require("electron-devtools-installer");
 
 // noinspection SpellCheckingInspection
 app.whenReady().then(async () => {

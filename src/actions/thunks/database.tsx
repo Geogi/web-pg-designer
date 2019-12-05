@@ -1,10 +1,16 @@
 /* tslint:disable:no-any */
-import {Root} from "../../reducers/root";
-import {databaseEnd, databaseErr, databaseOk, databasePool, navigatePage,} from "../actions";
-import {countRows, selectVersion, showTables} from "../../utils/queries";
-import {Table} from "../../reducers/database";
-import {showPrimaryKeys} from "../../utils/queries/showPrimaryKeys";
-import {showColumns} from "../../utils/queries/showColumns";
+import { Root } from "../../reducers/root";
+import {
+  databaseEnd,
+  databaseErr,
+  databaseOk,
+  databasePool,
+  navigatePage,
+} from "../actions";
+import { countRows, selectVersion, showTables } from "../../utils/queries";
+import { Table } from "../../reducers/database";
+import { showPrimaryKeys } from "../../utils/queries/showPrimaryKeys";
+import { showColumns } from "../../utils/queries/showColumns";
 
 const endPool = async (state: Root) => {
   if (state.database.pool !== null) {

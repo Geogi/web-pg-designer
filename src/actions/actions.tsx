@@ -1,6 +1,6 @@
-import {createAction} from "../utils/actionReduce";
-import {Table} from "../reducers/database";
-import {Page} from "../reducers/navigation";
+import { createAction } from "../utils/actionReduce";
+import { Table } from "../reducers/database";
+import { Page } from "../reducers/navigation";
 
 export const stateReset = createAction("STATE/RESET");
 

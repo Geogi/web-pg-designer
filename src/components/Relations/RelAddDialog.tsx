@@ -1,10 +1,20 @@
-import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography,} from "@material-ui/core";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Typography,
+} from "@material-ui/core";
 import * as React from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {Root} from "../../reducers/root";
-import {relationsCreateName, relationsCreateShow,} from "../../actions/actions";
-import {Ev, Outlined, useFormStyles} from "../utils/forms";
-import {relationsCreateSubmit} from "../../actions/thunks/relations";
+import { useDispatch, useSelector } from "react-redux";
+import { Root } from "../../reducers/root";
+import {
+  relationsCreateName,
+  relationsCreateShow,
+} from "../../actions/actions";
+import { Ev, Outlined, useFormStyles } from "../utils/forms";
+import { relationsCreateSubmit } from "../../actions/thunks/relations";
 import ErrorIcon from "@material-ui/icons/Error";
 
 export const RelAddDialog = () => {
@@ -26,13 +36,13 @@ export const RelAddDialog = () => {
           label="Name"
           className={classes.inputField}
           value={name}
-          onChange={({target: {value}}: Ev) =>
+          onChange={({ target: { value } }: Ev) =>
             dispatch(relationsCreateName(value))
           }
         />
         {error && (
           <Typography>
-            <ErrorIcon/> {error}
+            <ErrorIcon /> {error}
           </Typography>
         )}
       </DialogContent>

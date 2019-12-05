@@ -1,6 +1,6 @@
-import {Root} from "../../reducers/root";
-import {relationsCreateErr, relationsCreateShow} from "../actions";
-import {createTable} from "../../utils/queries/createTable";
+import { Root } from "../../reducers/root";
+import { relationsCreateErr, relationsCreateShow } from "../actions";
+import { createTable } from "../../utils/queries/createTable";
 
 export const relationsCreateSubmit = () => async (
   dispatch: Function,

@@ -1,5 +1,5 @@
-import {OutlinedTextFieldProps} from "@material-ui/core/TextField";
-import {createStyles, makeStyles, TextField, Theme} from "@material-ui/core";
+import { OutlinedTextFieldProps } from "@material-ui/core/TextField";
+import { createStyles, makeStyles, TextField, Theme } from "@material-ui/core";
 import * as React from "react";
 
 export const Outlined = (props: Omit<OutlinedTextFieldProps, "variant">) => (

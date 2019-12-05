@@ -1,12 +1,12 @@
 import * as React from "react";
-import {useEffect} from "react";
-import {CssBaseline} from "@material-ui/core";
-import {MDrawer} from "./MDrawer";
-import {MainView} from "./MainView";
-import {MAppBar} from "./MAppBar";
-import {useDispatch, useSelector} from "react-redux";
-import {Root} from "../reducers/root";
-import {setup} from "../utils/setup";
+import { useEffect } from "react";
+import { CssBaseline } from "@material-ui/core";
+import { MDrawer } from "./MDrawer";
+import { MainView } from "./MainView";
+import { MAppBar } from "./MAppBar";
+import { useDispatch, useSelector } from "react-redux";
+import { Root } from "../reducers/root";
+import { setup } from "../utils/setup";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -15,10 +15,10 @@ export const App = () => {
 
   return (
     <React.Fragment>
-      <CssBaseline/>
-      <MAppBar/>
-      <MDrawer/>
-      <MainView/>
+      <CssBaseline />
+      <MAppBar />
+      <MDrawer />
+      <MainView />
     </React.Fragment>
   );
 };
